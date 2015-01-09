@@ -1,0 +1,37 @@
+#container{
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+#container table{
+	border: 2px solid black;
+	border-collapse: collapse;
+}
+#container table td, th{
+	padding: 5px 15px;
+	text-align: center;
+}
+#container table th{
+	background-color: #D8D8D8
+}
+#bottom form{
+	width: 400px;
+}
+#bottom form label{
+	display: inline-block;
+	width: 150px;
+	margin-bottom: 10px;
+}
+#bottom form select{
+	width: 150px;
+}
+#bottom form input{
+	width: 150px;
+}
+#bottom input#submit_task{
+	width: 80px;
+	margin-left: 230px;
+	background-color: #2E9AFE;
+	color: white;
+	border-color: #2E9AFE;
+	border-radius: 5px;
+}

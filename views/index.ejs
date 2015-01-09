@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+	    <title><%= title %></title>
+	    <link rel='stylesheet' href='/stylesheets/style.css' />
+	    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+	  	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	  	<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+	  	<!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+		<script>
+			$(document).ready(function(){
+			  	$(function() {
+			    	$( "#datepicker" ).datepicker();
+			    	$( "#format" ).change(function() {
+			      	$( "#datepicker" ).datepicker( "option", "dateFormat", $( this ).val() );
+			    	});
+			  	});	
+		  	});
+	  	</script>
+  	</head>
+  	<body>
+  		<div id='container'>
+		    <h1><%= title %></h1>
+		    <table>
+		    	<thead>
+		    		<tr>
+						<th>Tasks</th>
+						<th>Priority</th>
+						<th>Deadline</th>
+						<th>Created</th>
+						<th>Actions</th>
+					</tr>
+		    	</thead>
+		    	<tbody>
+<%		if(task){
+			for(i in task){
+%> 					<tr>
+						<td><%= task[i].task_name %></td>
+						<td><%= task[i].priority %></td>
+						<td><%= task[i].deadline %></td>
+						<td><%= task[i].created_at %></td>
+						<td>
+		    				<form action='/tasks/<%= task[i]._id %>' method='post'>
+		    					<input type='hidden' name='action' value='delete'>
+		    					<input type='submit' value='Remove'>
+		    				</form>
+		    			</td>
+		    		</tr>
+<%			}
+		}			%>
+		    	</tbody>
+		    </table>
+		    <div id='bottom'>
+				<h2>Add a new task</h2>
+				<form action='/tasks' method='post'>
+					<label>Task Name:</label>
+					<input type='text' name='task_name'>
+					<label>Priority:</label>
+					<select name='priority'>
+						<option value='high'>HIGH</option>
+						<option value='medium'>MEDIUM</option>
+						<option value='low'>LOW</option>
+					</select>
+					<label>Deadline:</label>
+					<input type="text" name='deadline' id="datepicker" size="30">
+					<input id='submit_task' type='submit' value='Create'>
+				</form>
+		    </div>
+		</div>
+  	</body>
+</html>
